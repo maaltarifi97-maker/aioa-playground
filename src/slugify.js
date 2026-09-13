@@ -1,19 +1,23 @@
-'use strict';
-
-/**
- * Turn a human title into a URL slug.
- *   "Hello, World!"  -> "hello-world"
- *   "  Ünïcode Café " -> "unicode-cafe"
- */
-function slugify(input) {
-  if (typeof input !== 'string') {
-    throw new TypeError('slugify expects a string');
+function slugify(str) {
+  if (typeof str !== 'string') {
+    throw new TypeError('Expected a string');
   }
-  return input
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+  str = str.toLowerCase();
+
+  // Strip accents
+  str = str.normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  // Replace all non-alphanumeric characters with a hyphen
+  str = str.replace(/[^a-z0-9]/g, '-');
+
+  // Collapse multiple hyphens into a single hyphen
+  str = str.replace(/-+/g, '-');
+
+  // Trim leading and trailing hyphens
+  str = str.replace(/^-+|-+$/g, '');
+
+  return str;
 }
 
 module.exports = { slugify };
