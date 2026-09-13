@@ -3,6 +3,7 @@
 /**
  * Turn a human title into a URL slug.
  *   "Hello, World!"  -> "hello-world"
+ *   "  --Hello World--  " -> "hello-world"
  *   "  Ünïcode Café " -> "unicode-cafe"
  */
 function slugify(input) {
