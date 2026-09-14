@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * Turn a human title into a URL slug.
  *   "Hello, World!"  -> "hello-world"
@@ -15,5 +16,6 @@ function slugify(input) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
+
 
 module.exports = { slugify };
