@@ -19,6 +19,14 @@ test('does not produce leading or trailing hyphens', () => {
   assert.equal(slugify('  --Hello World--  '), 'hello-world');
 });
 
+test('collapses interior separator runs while trimming both ends', () => {
+  assert.equal(slugify('!!! Hello --- World !!!'), 'hello-world');
+});
+
+test('returns an empty string when the input has no alphanumerics', () => {
+  assert.equal(slugify('  --- '), '');
+});
+
 test('rejects non-strings', () => {
   assert.throws(() => slugify(42), TypeError);
 });
