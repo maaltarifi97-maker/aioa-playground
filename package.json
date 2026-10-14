@@ -4,7 +4,7 @@
   "private": true,
   "description": "Small utility library used to exercise the AI Opportunity Agent end to end.",
   "scripts": {
-    "test": "node --test test/"
+    "test": "node --test test/slugify.test.js"
   },
   "engines": {
     "node": ">=20"
