@@ -2,8 +2,9 @@
 
 /**
  * Turn a human title into a URL slug.
- *   "Hello, World!"  -> "hello-world"
- *   "  Ünïcode Café " -> "unicode-cafe"
+ *   "Hello, World!"     -> "hello-world"
+ *   "  Ünïcode Café "   -> "unicode-cafe"
+ *   "  --Hello World--" -> "hello-world"
  */
 function slugify(input) {
   if (typeof input !== 'string') {
@@ -13,7 +14,8 @@ function slugify(input) {
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 module.exports = { slugify };
